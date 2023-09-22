@@ -1,0 +1,196 @@
+body {
+  background-color: #effffd;
+  font-family: "Roboto Slab", serif;
+}
+
+section {
+  width: 1400px;
+  height: 850px;
+  margin: auto;
+  border-radius: 10px;
+  position: relative;
+}
+
+.blue {
+  height: 500px;
+  /* background-image: linear-gradient(
+    to right,
+    rgb(95, 142, 243),
+    rgba(35, 35, 151, 0.614)
+  ); */
+}
+
+.white {
+  height: 350px;
+  /* background-color: white; */
+}
+
+.profile {
+  height: 600px;
+  width: 1050px;
+  left: 180px;
+  position: absolute;
+  top: 10rem;
+  /* background-color: white; */
+  box-shadow: 0px 0px 10px rgba(6, 6, 32, 0.18);
+  display: flex;
+  border-radius: 10px;
+}
+
+.datas {
+  margin-left: 1rem;
+  /* margin-right: auto; */
+  margin-right: 1rem;
+}
+
+.datas p span {
+  color: white;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.profile img {
+  width: 400px;
+  height: 400px;
+  margin-top: 80px;
+  margin-left: 80px;
+  border-radius: 50%;
+}
+
+.second_div_profile {
+  position: absolute;
+  top: 12rem;
+  right: 250px;
+  background-color: #85f4ff;
+  height: 450px;
+  width: 400px;
+  padding-top: 25px;
+  border-radius: 10px;
+  box-shadow: rgb(25 3 3 / 29%) 0px 0px 10px;
+  padding-bottom: 4rem;
+}
+
+.second_div_profile_p1 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.second_div_profile h2 {
+  text-align: center;
+}
+
+.second_div_profile_3rdp {
+  text-align: center;
+}
+
+.second_div_profile_2rdp {
+  text-align: center;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+  margin-left: 30px;
+  margin-top: -1rem;
+}
+
+.icons img {
+  width: 24px;
+  height: 24px;
+  margin-top: 20px;
+}
+
+.top_icons {
+  margin-top: 40px;
+}
+
+.icons p {
+  margin-top: 25px;
+}
+
+button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  /* padding: 10px 43px; */
+  height: 2rem;
+  width: 6rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(181, 132, 231);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+button:hover {
+  background-color: black;
+  color: rgb(181, 132, 231);
+}
+
+a {
+  color: white;
+}
+
+.aaa {
+  color: white;
+}
+
+.aaa:hover {
+  text-decoration: underline;
+}
+
+.edit {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  /* padding: 10px 45px; */
+  height: 2rem;
+  width: 6rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(181, 132, 231);
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit:hover {
+  background-color: black;
+  color: rgb(181, 132, 231);
+  transition: 0.5s;
+}
+
+.delete {
+  position: absolute;
+  top: 95px;
+  right: 10px;
+  /* padding: 10px 21px; */
+  height: 2rem;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(181, 132, 231);
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: black;
+  color: rgb(181, 132, 231);
+  transition: 0.5s;
+}
+
+#gmail p {
+  width: 5rem;
+}

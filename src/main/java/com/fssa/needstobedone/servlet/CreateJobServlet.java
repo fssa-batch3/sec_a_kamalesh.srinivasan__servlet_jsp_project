@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.fssa.needstobedone.exception.ServiceException;
 import com.fssa.needstobedone.model.Job;
+import com.fssa.needstobedone.model.User;
 import com.fssa.needstobedone.services.JobService;
 
 /**
@@ -29,19 +30,26 @@ public class CreateJobServlet extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String loggedInEmail = (String) session.getAttribute("loggedInEmail");
+		User user = (User) session.getAttribute("user");
+		int userId = user.getUserId();
 		String title = request.getParameter("title");
-		String sentPrice = request.getParameter("price");
-		int price = Integer.parseInt(sentPrice);
+		String location = request.getParameter("location");
+		String salaryStr = request.getParameter("Salary");
+		int salary = Integer.parseInt(salaryStr);
+		String description = request.getParameter("disc");
+		String summary = request.getParameter("summary");
+		String qualifications = request.getParameter("Qualifications");
+		String responsibilities = request.getParameter("Responsibilities");
 
-		Job job = new Job(title, price, loggedInEmail);
+		Job job = new Job(title, location, salary, description, summary, qualifications, responsibilities, userId);
 		JobService jobService = new JobService();
+	
 		try {
 			jobService.createJob(job);
 			response.sendRedirect("home");
+			System.out.println("job Created");
 		} catch (ServiceException e) {
 			out.println(e.getMessage());
 		}
 	}
-
 }

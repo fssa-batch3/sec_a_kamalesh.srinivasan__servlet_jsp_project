@@ -1,0 +1,177 @@
+body {
+	background-color: #f6f6f6;
+	font-family: "Aref Ruqaa Ink", serif;
+}
+
+form {
+	width: 25rem;
+	background-color: #9eabf7;
+	border-radius: 0.5rem;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	margin-top: -3rem;
+}
+
+.register {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5rem;
+	margin-left: 4rem;
+	gap: 2rem;
+}
+
+form h2 {
+	margin-top: 1rem;
+	text-align: center;
+}
+
+.inputs {
+	margin-top: 2rem;
+	margin-left: 4rem;
+}
+
+.inputs {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+input {
+	border: none;
+	border-radius: 0.2rem;
+	width: 16rem;
+	outline: none;
+	height: 2.3rem;
+	transition: 0.12s;
+}
+
+input:focus {
+	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+		rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px
+		-79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+		rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+		rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.inputs p {
+	font-size: small;
+	color: white;
+	width: 18rem;
+}
+
+.repeatPassword {
+	margin-top: -2rem;
+}
+
+#repeatPassword:invalid { .inputs p { font-size:small;
+	color: red;
+	width: 18rem;
+}
+
+}
+#password:invalid { .inputs p { font-size:small;
+	color: red;
+	width: 18rem;
+}
+
+}
+.buttons {
+	display: flex;
+	justify-content: center;
+	gap: 4rem;
+	margin-top: -0.3rem;
+}
+
+button img {
+	width: 5rem;
+	transition: 0.2s;
+}
+
+button img:hover {
+	scale: 0.9;
+}
+
+button {
+	border: none;
+	background-color: transparent;
+	outline: none;
+}
+
+#reset:focus {
+	border: none;
+	outline: none;
+}
+
+#submit:focus {
+	border: none;
+	outline: none;
+}
+
+#repeatPasswordEye {
+	margin-left: -1.5rem;
+}
+
+#passwordEye {
+	margin-left: -1.7rem;
+}
+
+.signIn {
+	margin-left: 4rem;
+}
+
+.is-owner {
+	display: inline-block;
+	position: relative;
+	padding-left: 30px; 
+	margin-bottom: 10px; 
+	cursor: pointer;
+	font-size: 16px; 
+	user-select: none;
+}
+
+.is-owner input {
+	position: absolute;
+	opacity: .5;
+	cursor: pointer;
+	margin-left: 15px;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px; /* Adjust as needed */
+	width: 20px; /* Adjust as needed */
+	background-color: #fff; /* Background color of the checkbox */
+	border: 2px solid #007BFF; /* Border color of the checkbox */
+	border-radius: 4px; /* Rounded corners */
+}
+
+.is-owner input:checked ~ .checkmark {
+	background-color: #007BFF; /* Background color when checked */
+	border-color: #007BFF; /* Border color when checked */
+}
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.is-owner input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.is-owner .checkmark:after {
+	left: 7px; /* Adjust as needed */
+	top: 3px; /* Adjust as needed */
+	width: 5px; /* Adjust as needed */
+	height: 10px; /* Adjust as needed */
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+.is-owner input:hover{
+	
+}

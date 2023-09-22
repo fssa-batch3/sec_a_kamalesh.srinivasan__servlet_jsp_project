@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Data</title>
+    <link rel="stylesheet" href="../assets/css/Bio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;700&family=Outfit:wght@300&family=Roboto+Mono:ital,wght@0,300;1,300&family=Roboto+Slab:wght@300&family=Space+Mono:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="../assets/Images/barLogo.png" type="image/x-icon">
+
+</head>
+<!-- This is bio  -->
+
+<body>
+    <section>
+        <div class="container">
+
+            <header class="header">
+
+                <h1 id="title">BIO-DATA FORM</h1>
+                <p id="description">
+                    Kindly Fill Out The Form Below.
+                </p>
+
+            </header>
+
+            <form id="survey-form">
+
+                <div class="form-groupings">
+                    <label for="name" id="name-label">
+                        First Name
+                    </label>
+                    <input type="text" pattern="[A-Za-z]{5,100}" id="First_Name" name="name" value="Kamalesh"
+                        placeholder="Enter your name"
+                        title="Enter atleast one capital and small letter and 5 charecters" class="form-columns"
+                        required />
+                </div>
+
+                <div class="form-groupings">
+                    <label for="name" id="name-label">
+                        Last Name
+                    </label>
+                    <input type="text" id="Last_Name" name="name" pattern="[A-Za-z]{5,100}" value="Srinivasan"
+                        title="Enter atleast one capital and small letter and 5 charecters"
+                        placeholder="Enter your name" class="form-columns" required />
+                </div>
+
+
+
+                <div class="form-groupings">
+                    <label for="number" id="number-label">
+                        DOB
+                    </label>
+                    <input type="date" id="DOB" name="age" class="form-columns" max="2010-01-01" id="number"
+                        title="Your DOB should be before 2010" placeholder="Enter your age" required />
+                </div>
+
+                <div class="form-groupings">
+                    <label for="telephone" id="tel-label">
+                        Expert_in </label>
+                    <input type="tel" name="phone number" placeholder="Skills . . . " class="form-columns"
+                        id="Expect_in" required />
+                </div>
+
+                <div class="form-groupings">
+                    <label for="Phone" id="tel-label">
+                        Enter Your Phone Number
+                    </label>
+                    <input type="text" name="phone number" placeholder="Enter your phone number here"
+                        class="form-columns" id="Phone" pattern="[0-9]{10,10}"
+                        title="number should have 10 numbers only" required />
+                </div>
+
+                <div class="form-groupings">
+                    <label for="telephone" id="tel-label">
+                        Enter Your Aadhar Number
+
+                    </label>
+                    <input type="text" name="Aadhar_number" placeholder="Enter Your Aadhar Number" class="form-columns"
+                        id="Aadhar_number" pattern="[0-9]{12}" title="Aadhar number should be 12 numbers only"
+                        required />
+                </div>
+
+                <div class="form-groupings">
+                    <label for="upi" id=" upi">
+                        Enter Your UPI id
+
+                    </label>
+                    <input type="text" name="upi" placeholder="Enter Your UPI id" class="form-columns" id="upi"
+                        required />
+                </div>
+
+                <div class="form-groupings">
+                    <p>Your Occupation</p>
+                    <select id="dropdown" name="occupation" class="form-columns" required>
+                        <option disabled selected value>Select current role
+                        </option>
+                        <option value="student">
+                            Student
+                        </option>
+                        <option value="unemployed">
+                            Unemployed
+                        </option>
+                        <option value="civil servant">
+                            Civil Servant
+                        </option>
+                        <option value="Prefer not to say">
+                            Prefer not to say
+                        </option>
+                        <option value="others">
+                            Others
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="form-groupings">
+                    <p> Educational Background<span class="clue"> (check all that apply)</span>
+                        <label>
+                            <input type="checkbox" class="checkbox-input" value="primary-cert" name="education"
+                                id="PrimarySchool" />Primary School
+                        </label>
+
+                        <label>
+                            <input type="checkbox" class="checkbox-input" value="secondary-cert" name="education"
+                                id="Secondary_School" />Secondary School
+                        </label>
+                        <label>
+                            <input type="checkbox" class="checkbox-input" value="B.Sc" id="B.Sc" name="education" />B.Sc
+                        </label>
+
+                        <label>
+                            <input type="checkbox" class="checkbox-input" value="M.Sc" id="M.Sc" name="education" />M.Sc
+                        </label>
+
+                        <label>
+                            <input type="checkbox" class="checkbox-input" value="Ph.D" id="Ph.D" name="education" />Ph.D
+                        </label>
+
+                        <label>
+                            <input type="checkbox" class="checkbox-input" value="Others" id="others"
+                                name="education" />Others
+                        </label>
+
+                </div>
+                <div>
+
+                    <label for="skils">Skils</label>
+                    <input type="text" id="skill" class="form-columns" placeholder="HTML,CSS,JS,plumbing">
+
+                </div>
+
+
+
+                <div class=" form-groupings">
+                    <p>Address</p>
+                    <textarea class="textarea-input" id="Address" name="Address" pattern="[A-Za-z][0-9]{1-20}"
+                        title="Space and special charecters not allowed" pattern placeholder="Enter your address"
+                        required></textarea>
+                </div>
+
+                <div class="form-groupings">
+                    <p>Something about you</p>
+                    <textarea class="textarea-input" id="comments" name="comments"
+                        placeholder="Enter Something about you..."></textarea>
+                </div>
+
+
+
+                <div class="form-groupings">
+                    <button type="submit" id="submit" class="submit-button">Submit
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+</body>
+
+</html>
+
+</html>

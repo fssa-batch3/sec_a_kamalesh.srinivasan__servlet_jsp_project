@@ -1,0 +1,121 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #effffd;
+  font-family: "Roboto Slab", serif;
+}
+
+section {
+  margin-top: 12rem;
+  margin-left: 36rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.login {
+  font-weight: bolder;
+  font-size: 2rem;
+  background-color: linear-gradient(to right, #00ec96, #00a6f3);
+}
+
+.login img {
+  width: 2rem;
+  height: 2rem;
+}
+
+#form {
+  margin-top: 3rem;
+}
+
+#form input {
+  margin-top: 1rem;
+  width: 20rem;
+  height: 2rem;
+  border-radius: 1rem;
+  border: 1px solid lightblue;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+#form label {
+  font-weight: bolder;
+}
+
+.ftPwd {
+  font-weight: 900;
+  color: blueviolet;
+  cursor: pointer;
+}
+
+#form .buttons {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  justify-content: center;
+  margin-left: 0.7rem;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.buttons button {
+  height: 2rem;
+  font-size: large;
+  border-radius: 0.5rem;
+  background-color: burlywood;
+  border: none;
+}
+
+.buttons button:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.right img {
+  width: 30rem;
+}
+
+.getEmailDiv {
+  margin-left: 40rem;
+  margin-top: 15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.enterEmail {
+  width: 15rem;
+  height: 1.8rem;
+  border-radius: 0.4rem;
+  border: none;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 0.4rem;
+}
+
+.cancel {
+  margin-right: 1rem;
+  width: 7rem;
+}
+
+.sendEmail {
+  width: 7rem;
+}
+
+.inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputs i {
+  margin-left: -2rem;
+  margin-top: 1rem;
+}
+#Password {
+  margin-left: -1rem;
+}

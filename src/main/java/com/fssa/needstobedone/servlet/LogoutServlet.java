@@ -21,15 +21,14 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 
 		if (session != null) {
-			session.removeAttribute("loggedInEmail");
-			System.out.println("Existing Session ID:" + session.getId());
+			session.removeAttribute("user");
 			session.invalidate();
 		} else {
 			System.out.println("No Session Exists");
 		}
 
 		// Redirecting to login page since we have logged out
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("index.jsp");
 	}
 
 }

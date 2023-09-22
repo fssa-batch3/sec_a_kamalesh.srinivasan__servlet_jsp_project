@@ -1,0 +1,10 @@
+com\fssa\needstobedone\servlet\HomeServlet.class
+com\fssa\needstobedone\servlet\LogoutServlet.class
+com\fssa\needstobedone\servlet\DeleteJobServlet.class
+com\fssa\needstobedone\servlet\modal\User.class
+com\fssa\needstobedone\servlet\RegisterAjaxServlet.class
+com\fssa\needstobedone\servlet\CreateJobServlet.class
+com\fssa\needstobedone\servlet\GetAllUserServlet.class
+com\fssa\needstobedone\servlet\modal\Account.class
+com\fssa\needstobedone\servlet\LoginServlet.class
+com\fssa\needstobedone\servlet\RegisterServlet.class

@@ -1,46 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="com.fssa.needstobedone.model.User"%>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User Registration</title>
-<!-- Include Bootstrap CSS -->
+<title>Needs To Be Done</title>
+<link rel="icon" href="./assets/Images/barLogo.png" type="image/x-icon">
+
+<link rel="stylesheet" href="./assets/css/Register.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-	crossorigin="anonymous">
-<style>
-body {
-	font-family: Arial, sans-serif;
-	background-color: #f2f2f2;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
-.container {
-	max-width: 400px;
-	background-color: #fff;
-	padding: 20px;
-	border-radius: 8px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-	text-align: center;
-	color: #333;
-}
-</style>
+	href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;700&family=Outfit:wght@300&family=Roboto+Mono:ital,wght@0,300;1,300&family=Roboto+Slab:wght@300&family=Space+Mono:wght@700&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<script src="./assets/JS/register.js"></script>
+</head>
+<!-- This is register page -->
+
 <body>
-	<div class="container">
-		<h1>User Registration</h1>
+	<section class="register">
+		
+
+		<form id="form" method="post" action="userRegister">
 		<%
 		String errorMessage = request.getParameter("error");
 		if (errorMessage != null) {
@@ -51,60 +44,78 @@ h1 {
 		<%
 		}
 		%>
-		<form action="register" method="post">
-			<div class="mb-3">
-				<label for="email" class="form-label">Email:</label> <input
-					type="email" class="form-control" id="email" name="email" value="kishor@gmail.com" required>
+		<%
+		User user = (User) request.getAttribute("regUser");
+		%>
+			<h2>Registration</h2>
+			<div class="inputs">
+				<div class="email">
+					<label for="email"> Email:- * </label><br> <input type="email"
+						name="email" id="email" placeholder="example@gmail.com"
+						value="<%=user != null ? user.getEmail() : ""%>"
+						required />
+				</div>
+				<div class="first-name">
+					<label for="first-name"> FirstName:- * </label><br> <input
+						type="text" id="first-name" name="firstName"
+						placeholder="firstname" pattern="^[A-Za-z]{3,}$" value="<%=user != null ? user.getFirstName() : ""%>" required />
+				</div>
+				<div class="last-name">
+					<label for="last-name"> LastName:- * </label><br> <input
+						type="text" id="last-name" name="lastName" placeholder="lastname"
+						pattern="^[A-Za-z]{3,}$" value="<%=user != null ? user.getLastName() : ""%>" required />
+				</div>
+
+				<div class="is-owner">
+					<input type="checkbox" id="is-owner" name="isOwner" checked="<%=user != null ? (user.getisOwner()) : false%>" > <label
+						for="is-owner">I am an Owner</label>
+				</div>
+				<div class="password">
+					<label for="password">Password:- *</label> <br> <input
+						type="password" id="password" placeholder="Examplepassword"
+						name="password" value="<%=user != null ? user.getPassword() : ""%>" required /> <i id="passwordEye"
+						onclick="passwordEye()" class="fa fa-eye"></i> <br>
+					<p>Password should have one UpperCase,LowerCase and more than 7
+						charecters</p>
+
+				</div>
+
+				<div class="repeatPassword">
+					<label for="repeatPassword"> Confirm password:- * </label><br>
+					<input type="password" id="repeatPassword"
+						placeholder="Examplepassword" value="<%=user != null ? user.getPassword() : ""%>"  required/><i id="repeatPasswordEye"
+						onclick="RepasswordEye()" class="fa fa-eye" ></i> <br>
+					<p>Confirm password should be same as password</p>
+				</div>
+
+
 			</div>
 
-			<div class="mb-3">
-				<label for="password" class="form-label">Password:</label> <input
-					type="password" class="form-control" id="password" name="password" value="Test@123"
-					required>
+			<div class="buttons">
+				<button id="reset" type="reset">
+					<img src="<%= request.getContextPath() %>/assets/images/cross.svg" alt="cancelImage">
+				</button>
+				<button id="submit" type="submit">
+					<img src="<%= request.getContextPath() %>/assets/images/tick.svg" alt="tickImage">
+				</button>
 			</div>
 
-			<div class="mb-3">
-				<label for="firstName" class="form-label">First Name:</label> <input
-					type="text" class="form-control" id="firstName" name="firstName" value="kishore" 
-					required>
-			</div>
-
-			<div class="mb-3">
-				<label for="lastName" class="form-label">Last Name:</label> <input
-					type="text" class="form-control" id="lastName" name="lastName" value="muruganantham"
-					required>
-			</div>
-
-			<div class="mb-3 form-check">
-				<input type="checkbox" class="form-check-input" id="isOwner"
-					name="isOwner"> <label class="form-check-label" 
-					for="isOwner">Are you an owner?</label>
-			</div>
-
-			<div class="mb-3">
-				<label for="DOB" class="form-label">Date of Birth:</label> <input
-					type="date" class="form-control" id="DOB" name="DOB" value="2000-09-01" required>
-			</div>
-
-			<div class="mb-3">
-				<label for="phoneNumber" class="form-label">Phone Number:</label> <input
-					type="tel" class="form-control" id="phoneNumber" name="phoneNumber" value="7670987654"
-					required>
-			</div>
-
-			<div class="mb-3">
-				<label for="aadhar" class="form-label">Aadhar:</label> <input
-					type="number" class="form-control" id="aadhar" name="aadhar" value="456756569898"
-					required>
-			</div>
-
-			<div class="mb-3">
-				<label for="address" class="form-label">Address:</label> 
-				<textarea class="form-control" id="address" name="address"  required>Chennai</textarea>
-			</div>
-
-			<button type="submit" class="btn btn-primary">Register</button>
+			<p class="signIn">
+				If you already have an account? <a href="Signin.jsp">SignIn</a>
+			</p>
 		</form>
-	</div>
+
+		<div class="registerIllutration">
+			<img src="<%= request.getContextPath() %>/assets/images/register.avif" alt="image">
+		</div>
+
+
+	</section>
+
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
 </body>
+
 </html>

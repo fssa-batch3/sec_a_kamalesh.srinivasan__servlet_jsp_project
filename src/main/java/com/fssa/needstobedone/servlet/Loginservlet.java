@@ -1,8 +1,8 @@
 package com.fssa.needstobedone.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +18,7 @@ import com.fssa.needstobedone.services.UserService;
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/login")
-public class Loginservlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,22 +26,19 @@ public class Loginservlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		User user = new User(email, password);
-		PrintWriter out = response.getWriter();
 		UserService userService = new UserService();
-
 		try {
-			userService.logInUser(user);
+			User gettedUser = userService.logInUser(user);
+			System.out.println(gettedUser.getUserId());
 			HttpSession session = request.getSession();
-			session.setAttribute("loggedInEmail", email);
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("home");
-			
-//			dispatcher.forward(request, response);
-			response.sendRedirect("home");
+			session.setAttribute("user", gettedUser);
+			session.setMaxInactiveInterval(24*60);
+			RequestDispatcher dispatcher;
+			dispatcher = request.getRequestDispatcher("home");
+			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
-			response.sendRedirect("login.jsp?error="+e.getMessage());
-			
+			System.out.println("error");
+			response.sendRedirect("Signin.jsp?error=" + e.getMessage());
 		}
-
 	}
-
 }

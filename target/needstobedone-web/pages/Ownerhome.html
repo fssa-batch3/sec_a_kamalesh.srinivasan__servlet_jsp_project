@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Home</title>
+    <link rel="stylesheet" href="../assets/css/ownerhome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;700&family=Outfit:wght@300&family=Roboto+Mono:ital,wght@0,300;1,300&family=Roboto+Slab:wght@300&family=Space+Mono:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="icon" href="../assets/images/barLogo.png" type="image/x-icon">
+
+
+</head>
+
+
+<body>
+    <script src="../assets/JS/index.js"></script>
+    <header>
+        <div>
+            <img src="../assets/images/logo-transparent-svg.svg" alt="Logo">
+        </div>
+
+        <nav>
+            <div>
+                <a><span>Home</span></a>
+                <a onclick="chatRD()"> <span>Chat</span> </a>
+                <a onclick="OWnotification()"><span>Notification</span></a>
+                <a onclick="rdToPayment()"><span>Payment</span></a>
+                <a onclick="urlDataProfile()"><span>profile</span></a>
+                <a id="logout" href="../index.html"><span>LogOut</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="discoverJobs">
+                <h2>Discover Jobs</h2>
+                <div class="finds">
+                    <div class="left_discover">
+                        <input type="text" id="search" />
+                        <i class="fa fa-search" style="font-size:35px;color:rgb(220, 204, 204)"
+                            onclick="searchJob()"></i>
+
+                        <i class="fa fa-plus" id="plusIcon" onclick="openCreateJob()">Create Job</i>
+
+
+                    </div>
+
+                    <div class="rightDiscover">
+                        <i class="fa fa-filter"></i>
+                        <select name="Filter" id="filter">
+                            <option value="Recent Jobs">Recent Jobs</option>
+                            <option value="Pendig Jobs">Pending Jobs</option>
+
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="cards">
+
+        </section>
+
+
+
+        <section class="form">
+            <div class="blur"></div>
+            <form id="form">
+
+                <h2>Upload your Requirement</h2>
+                <div class="datas">
+                    <div> <input type="text" id="title" placeholder="Title of the job" value="Full Stack developer"
+                            required /><BR>
+                        <input type="text" id="location" placeholder="Location" value="Chennai" required /><br>
+                        <input type="number" id="Salary" placeholder="Salary" value="1000000" required /><br>
+                        <input type="text" id="disc" placeholder="Description" maxlength="110"
+                            value="A full stack developer is a versatile professional who works on both the front-end and back-end aspects of web development."
+                            required /><br>
+
+                        <textarea id="summary" placeholder="Summary"
+                            required>Developing and maintaining web applications from concept to deployment.Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks.Building and integrating back-end services and APIs using server-side languages such as Python, Java, Ruby, or Node.js.Developing and maintaining databases, including data modeling, querying, and optimization.Collaborating with designers, project managers, and other stakeholders to gather requirements and ensure smooth project execution.Writing clean, efficient, and maintainable code following coding standards and best practices.Conducting testing and debugging to identify and fix issues or bugs.Deploying and configuring applications on web servers and cloud platforms.Ensuring applications are secure, scalable, and optimized for performance.Staying up-to-date with emerging technologies and industry trends to suggest improvements and innovative solutions.</textarea>
+                    </div>
+
+                    <div>
+                        <textarea id="Qualifications" placeholder="Qualifications"
+                            required>Proficiency in front-end technologies such as HTML, CSS, JavaScript, and modern frameworks like React, Angular, or Vue Strong knowledge of server-side languages and frameworks such as Python/Django, Java/Spring, Ruby/Ruby on Rails, or Node.js/Express.js.
+Experience working with databases such as MySQL, PostgreSQL, MongoDB, or Oracle.Familiarity with version control systems like Git and collaborative development workflows.Knowledge of web servers and cloud platforms for deployment, such as AWS, Azure, or Google Cloud.Understanding of RESTful APIs, microservices architecture, and client-server communication.Strong problem-solving skills and ability to handle the full software development cycle.Excellent communication and collaboration skills to work effectively in a team environment.Continuous learning mindset and willingness to adapt to new technologies and tools.</textarea>
+                        <textarea id="Responsibilities" placeholder="Responsibilities"
+                            required>Developing and maintaining web applications from concept to deployment.Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks.Building and integrating back-end services and APIs using server-side languages such as Python, Java, Ruby, or Node.js.Developing and maintaining databases, including data modeling, querying, and optimization.Collaborating with designers, project managers, and other stakeholders to gather requirements and ensure smooth project execution.Writing clean, efficient, and maintainable code following coding standards and best practices.Conducting testing and debugging to identify and fix issues or bugs.Deploying and configuring applications on web servers and cloud platforms.Ensuring applications are secure, scalable, and optimized for performance.Staying up-to-date with emerging technologies and industry trends to suggest improvements and innovative solutions.</textarea><br>
+                    </div>
+                </div>
+                <div class="formButttons">
+                    <div id="closeCreateJob" onclick="closeCreateJob()">Cancel</div>
+                    <button type="submit">Add</button>
+                </div>
+            </form>
+        </section>
+
+
+
+
+
+
+    </main>
+    <script src="../assets/JS/ownerHome.js"></script>
+    <script src="../assets/JS/workerNotification.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        // Default Configuration
+        $(document).ready(function () {
+            toastr.options = {
+                'closeButton': true,
+                'debug': false,
+                'newestOnTop': false,
+                'progressBar': false,
+                'positionClass': 'toast-top-right',
+                'preventDuplicates': false,
+                'showDuration': '1000',
+                'hideDuration': '1000',
+                'timeOut': '5000',
+                'extendedTimeOut': '1000',
+                'showEasing': 'swing',
+                'hideEasing': 'linear',
+                'showMethod': 'fadeIn',
+                'hideMethod': 'fadeOut',
+            }
+        });
+    </script>
+
+    <script>
+        let requirements = JSON.parse(localStorage.getItem("requirements"));
+        let logIn = JSON.parse(localStorage.getItem("Login"));
+        let UplodedJobsappendTag = document.querySelector(".cards");
+
+
+        if (requirements == null) {
+            let rect_cards = document.createElement("div");
+            rect_cards.setAttribute("class", "card");
+            rect_cards.innerHTML = `<p>JOBS NOT FOUND</p>`;
+            UplodedJobsappendTag.append(rect_cards);
+        }
+        else {
+
+
+            let UplodedJobsMatchedId = requirements.filter((F) => F.ownerId == logIn.id);
+            console.log(UplodedJobsMatchedId);
+            let UplodedJobs = [];
+            for (let i = 0; i < UplodedJobsMatchedId.length; i++) {
+                if (UplodedJobsMatchedId[i]["isActive"] == true) {
+                    UplodedJobs.push(UplodedJobsMatchedId[i]);
+                }
+            }
+
+            console.log(UplodedJobs[0]);
+            if (UplodedJobs[0] == undefined) {
+                let rect_cards = document.createElement("div");
+                rect_cards.setAttribute("class", "card");
+                rect_cards.innerHTML = `<p>JOBS NOT FOUND</p>`;
+                UplodedJobsappendTag.append(rect_cards);
+            }
+            else {
+
+                for (let i = UplodedJobs.length - 1; i >= 0; i--) {
+                    // //console.log("test")
+                    createJobCard(UplodedJobs, i, UplodedJobsappendTag)
+                }
+
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // To get and store the Job datas
+
+        document.getElementById("form").addEventListener("submit", (event) => {
+
+            event.preventDefault();
+            try {
+                let summary = document.getElementById("summary").value;
+                let removedSummary = "";
+                let dot = false;
+                for (let i = 0; i < summary.length; i++) {
+
+                    if (summary[i] == ".") {
+                        dot = true;
+                    }
+                }
+                for (let i = 0; i < summary.length; i++) {
+
+
+                    if (dot == true) {
+                        let isHere = false;
+                        if (summary[i] == "\n") {
+                            isHere = true;
+                        }
+
+                        if (isHere == false) {
+                            removedSummary += summary[i];
+                        }
+                        //console.log(removedSummary)
+                    }
+                    else {
+                        return alert("Summary should have dot for separate the para")
+                    }
+                }
+
+                let qualification = document.getElementById("Qualifications").value;
+                let removedQualification = "";
+                dot = false;
+                for (let i = 0; i < qualification.length; i++) {
+                    if (qualification[i] == ".") {
+                        dot = true;
+                    }
+                }
+                for (let i = 0; i < qualification.length; i++) {
+
+
+                    if (dot == true) {
+                        let isHere = false;
+                        if (removedQualification[i] == "\n") {
+                            isHere = true;
+                        }
+
+                        if (isHere == false) {
+                            removedQualification += qualification[i];
+                        }
+                        //console.log(removedQualification)
+                    }
+                    else {
+                        return alert("Qualification should have dot for separate the para")
+                    }
+                }
+
+                let Responsibilities = document.getElementById("Responsibilities").value
+                let removedResponsibilities = "";
+                dot = false;
+                for (let i = 0; i < Responsibilities.length; i++) {
+                    if (Responsibilities[i] == ".") {
+                        dot = true;
+                    }
+                }
+                for (let i = 0; i < Responsibilities.length; i++) {
+
+
+                    if (dot == true) {
+                        let isHere = false;
+                        if (removedResponsibilities[i] == "\n") {
+                            isHere = true;
+                        }
+
+                        if (isHere == false) {
+                            removedResponsibilities += Responsibilities[i];
+                        }
+                        //console.log(removedResponsibilities)
+                    }
+                    else {
+                        return alert("Responsibilities should have dot for separate the para")
+                    }
+                }
+
+                let old;
+                let ownerId;
+
+                oId = JSON.parse(localStorage.getItem("Login"));
+                ownerId = oId["id"];
+                console.log(oId);
+
+                let Bio = JSON.parse(localStorage.getItem("BIO"));
+                let BioFind = Bio.find((F) => F.Email == oId.Email);
+                console.log(BioFind);
+
+
+                // let removedSummary = summary.replace('\n', '');
+                let formData = {
+                    id: Date.now(),
+                    FN: BioFind.FN,
+                    LN: BioFind.LN,
+                    title: document.getElementById("title").value,
+                    location: document.getElementById("location").value,
+                    Salary: document.getElementById("Salary").value,
+                    disc: document.getElementById("disc").value,
+                    summary: removedSummary,
+                    Qualifications: removedQualification,
+                    Responsibilities: removedResponsibilities,
+                    isActive: true,
+                    ownerId,
+                    isCompleted: false,
+                    started: false
+                }
+                //console.log(formData)
+                getUploadreq(formData)
+
+                // document.querySelector("#form").reset();
+                jobToast("success", "Jos has been created")
+                let await = new Promise((r) => setTimeout(r, 1500));
+                scrollTo(0, 0)
+                await.then(() => {
+                    location.reload();
+                });
+            }
+            catch (err) {
+                console.error(err);
+            }
+
+        })
+
+
+
+
+
+
+
+        document.getElementById("filter").setAttribute("onchange", "filter()");
+
+        function recentJobs() {
+            let requirements = JSON.parse(localStorage.getItem("requirements"));
+            let logIn = JSON.parse(localStorage.getItem("Login"));
+            let UplodedJobsappendTag = document.querySelector(".cards");
+
+
+            if (requirements == null) {
+                let rect_cards = document.createElement("div");
+                rect_cards.setAttribute("class", "card");
+                rect_cards.innerHTML = `<p>JOBS NOT FOUND</p>`;
+                UplodedJobsappendTag.append(rect_cards);
+            }
+            else {
+
+
+                let UplodedJobsMatchedId = requirements.filter((F) => F.ownerId == logIn.id);
+                console.log(UplodedJobsMatchedId);
+                let UplodedJobs = [];
+                for (let i = 0; i < UplodedJobsMatchedId.length; i++) {
+                    if (UplodedJobsMatchedId[i]["isActive"] == true) {
+                        UplodedJobs.push(UplodedJobsMatchedId[i]);
+                    }
+                }
+
+                console.log(UplodedJobs[0]);
+                if (UplodedJobs[0] == undefined) {
+                    let rect_cards = document.createElement("div");
+                    rect_cards.setAttribute("class", "card");
+                    rect_cards.innerHTML = `<p>JOBS NOT FOUND</p>`;
+                    UplodedJobsappendTag.append(rect_cards);
+                }
+                else {
+
+                    for (let i = UplodedJobs.length - 1; i > 0; i--) {
+                        // //console.log("test")
+                        createJobCard(UplodedJobs, i, UplodedJobsappendTag)
+                    }
+
+
+                }
+
+
+            }
+        }
+
+
+
+        function filter() {
+            let requirements = JSON.parse(localStorage.getItem("requirements"));
+            let logIn = JSON.parse(localStorage.getItem("Login"));
+            let UplodedJobsappendTag = document.querySelector(".cards");
+            UplodedJobsappendTag.innerHTML = null;
+            let x = document.getElementById("filter").value;
+            if (x == "Recent Jobs") {
+                recentJobs();
+            }
+            else if (x == "Pendig Jobs") {
+                pendingJobs();
+            }
+        }
+
+
+
+
+
+        function pendingJobs() {
+            let requirements = JSON.parse(localStorage.getItem("requirements"));
+            let logIn = JSON.parse(localStorage.getItem("Login"));
+            let UplodedJobsappendTag = document.querySelector(".cards");
+
+            let UplodedJobsMatchedId = requirements.filter((F) => F.ownerId == logIn.id);
+            console.log(UplodedJobsMatchedId);
+            let UplodedJobs = [];
+            for (let i = 0; i < UplodedJobsMatchedId.length; i++) {
+                if (UplodedJobsMatchedId[i]["isActive"] == true) {
+                    UplodedJobs.push(UplodedJobsMatchedId[i]);
+                }
+            }
+
+            console.log(UplodedJobs[0]);
+            if (UplodedJobs[0] == undefined) {
+                document.querySelector(".cards").innerHTML = null;
+                let rect_cards = document.createElement("div");
+                rect_cards.setAttribute("class", "card");
+                rect_cards.innerHTML = `<p>JOBS NOT FOUND</p>`;
+                UplodedJobsappendTag.append(rect_cards);
+            }
+            else {
+                document.querySelector(".cards").innerHTML = null;
+                let pendingJobs = UplodedJobs.filter((F) => F.isCompleted == false)
+                for (let i = 0; i < UplodedJobs.length; i++) {
+                    // //console.log("test")
+                    createJobCard(pendingJobs, i, UplodedJobsappendTag)
+                }
+
+
+            }
+
+        }
+
+
+        function searchJob() {
+            let searchedValue = document.getElementById("search").value;
+            let requirements = JSON.parse(localStorage.getItem("requirements"));
+            let logIn = JSON.parse(localStorage.getItem("Login"));
+            let UplodedJobsappendTag = document.querySelector(".cards");
+            let UplodedJobsMatchedId = requirements.filter((F) => F.ownerId == logIn.id);
+            let UplodedJobs = [];
+            for (let i = 0; i < UplodedJobsMatchedId.length; i++) {
+                if (UplodedJobsMatchedId[i]["isActive"] == true) {
+                    UplodedJobs.push(UplodedJobsMatchedId[i]);
+                }
+
+            }
+
+            let searchedJob = [];
+            for (let i = 0; i < UplodedJobs.length; i++) {
+                if (UplodedJobs[i]["FN"].includes(searchedValue)) {
+                    searchedJob.push(UplodedJobs[i]);
+                }
+                else if (UplodedJobs[i]["LN"].includes(searchedValue)) {
+                    searchedJob.push(UplodedJobs[i]);
+                }
+                else if (UplodedJobs[i]["Qualifications"].includes(searchedValue)) {
+                    searchedJob.push(UplodedJobs[i]);
+                }
+                else if (UplodedJobs[i]["location"].includes(searchedValue)) {
+                    searchedJob.push(UplodedJobs[i]);
+                }
+                else if (UplodedJobs[i]["Responsibilities"].includes(searchedValue)) {
+                    searchedJob.push(UplodedJobs[i]);
+
+                }
+                else if (UplodedJobs[i]["Salary"].includes(searchedValue)) {
+                    searchedJob.push(UplodedJobs[i]);
+                }
+                else if (UplodedJobs[i]["disc"].includes(searchedValue)) {
+                    searchedJob.push(UplodedJobs[i]);
+
+                }
+                else if (UplodedJobs[i]["summary"].includes(searchedValue)) {
+                    searchedJob.push(UplodedJobs[i]);
+
+                }
+                else if (UplodedJobs[i]["title"].includes(searchedValue)) {
+                    searchedJob.push(UplodedJobs[i]);
+                }
+
+            }
+
+            if (UplodedJobs[0] == undefined) {
+                document.querySelector(".cards").innerHTML = null;
+                let rect_cards = document.createElement("div");
+                rect_cards.setAttribute("class", "card");
+                rect_cards.innerHTML = `<p>JOBS NOT FOUND</p>`;
+                UplodedJobsappendTag.append(rect_cards);
+            }
+            else {
+                document.querySelector(".cards").innerHTML = null;
+                let pendingJobs = UplodedJobs.filter((F) => F.isCompleted == false)
+                for (let i = 0; i < UplodedJobs.length; i++) {
+                    // //console.log("test")
+                    createJobCard(searchedJob, i, UplodedJobsappendTag)
+                }
+
+
+            }
+
+        }
+
+
+
+        //  create jobs 
+
+
+        function payment() {
+            location.href = `payment.html?${location.search}`
+        }
+
+        function urlDataProfile() {
+            location.href = "profile.html" + location.search;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkerHome</title>
+    <link rel="stylesheet" href="../assets/css/workerHome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="../assets/Images/barLogo.png" type="image/x-icon">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;700&family=Outfit:wght@300&family=Roboto+Mono:ital,wght@0,300;1,300&family=Roboto+Slab:wght@300&family=Space+Mono:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <script src="../assets/JS/index.js"></script>
+    <header>
+        <div>
+            <img src="../assets/Images/logo-transparent-svg.svg" alt="Logo">
+        </div>
+
+        <nav>
+            <div>
+                <a><span>Home</span></a>
+                <a onclick="chat()"><span>Chat</span></a>
+                <a href="workerNotification.html?from=register&&type=worker&&filter=All"><span>Notification</span></a>
+                <a onclick="urlData()"><span>profile</span></a>
+                <a href="../index.html" style="background-color: #c84449;"><span>LogOut</span></a>
+
+            </div>
+        </nav>
+    </header>
+
+
+
+    <section class="filter">
+
+    </section>
+
+
+    <main>
+
+
+
+
+
+        <div class="left">
+
+            <section class="yourJobs">
+                <div class="topYourJobs">
+                    <h2>
+                        Your Jobs
+                    </h2>
+
+                    <div class="jobSearch">
+                        <input type="text" id="jobSearch" />
+                        <i class="fa fa-search" style="font-size:35px;color:rgb(220, 204, 204)"
+                            onclick="jobSearch()"></i>
+                    </div>
+                </div>
+                <div class="cards">
+                    <!-- <div class="card">
+                        <div class="userName"> <img src="../assets/Images/avatar (3).svg" alt="image"> Kamalesh</div>
+                        <div class="title">
+                            Web Development
+                        </div>
+
+                        <div class="description">
+                            A web developer is responsible for designing, developing, and maintaining
+                            websites and web applications.
+                        </div>
+
+                        <div class="last">
+                            <div class="location">Chennai</div>
+                            <div class="salary">Rs.10,000</div>
+                            <div class="viewMore"><i class="fa fa-angle-double-right"></i></div>
+                        </div>
+
+                    </div> -->
+
+                </div>
+            </section>
+
+        </div>
+
+
+
+
+    </main>
+    <footer>
+        <div>
+            <div class="logo">
+                <img src="../assets/Images/logo-transparent-svg.svg" alt="logo" />
+            </div>
+        </div>
+
+        <div class="Registered_Users">
+            <p>64,653,006<br>
+                Registered Users</p>
+        </div>
+
+        <div class="Total_Jobs_Posted">
+
+            <p>22,357,427<br>
+                Total Jobs Posted</p>
+        </div>
+
+        <div class="last">
+            <p>Apps</p>
+            <div class="apps">
+                <img src="../assets/Images/icons8-instagram.svg" alt="instagram" />
+                <img src="../assets/Images/icons8-twitter.svg" alt="twitter" />
+                <img src="../assets/Images/icons8-facebook.svg" alt="facebook" />
+                <img src="../assets/Images/icons8-youtube.svg" alt="youtube" />
+            </div>
+        </div>
+    </footer>
+
+    <section>
+        <div class="Copyright">
+            NeedsToBeDone ® is a registered Trademark of NTBD Technology Pty Limited.
+            Copyright © 2023 NTBD Technology Pty Limited.
+        </div>
+    </section>
+
+
+
+
+    <script src="../assets/JS/wrokerHome.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        // Default Configuration
+        $(document).ready(function () {
+            toastr.options = {
+                'closeButton': true,
+                'debug': false,
+                'newestOnTop': false,
+                'progressBar': false,
+                'positionClass': 'toast-top-right',
+                'preventDuplicates': false,
+                'showDuration': '1000',
+                'hideDuration': '1000',
+                'timeOut': '5000',
+                'extendedTimeOut': '1000',
+                'showEasing': 'swing',
+                'hideEasing': 'linear',
+                'showMethod': 'fadeIn',
+                'hideMethod': 'fadeOut',
+            }
+        });
+
+    </script>
+    <script>
+
+
+
+
+        //  Get localstorage requirements
+
+        let yourJobs;
+
+
+        yourJobs = getLocalreq();
+
+        let url = location.search;
+        let urlParams = new URLSearchParams(url);
+        let from = urlParams.get("from");
+        let type = urlParams.get("type");
+        let id = urlParams.get("id")
+        console.log(from);
+
+        function urlData() {
+            location.href = "workerProfile.html?from=" + from + "&&type=" + type;
+        }
+
+
+        // Job Deatils
+
+        console.log(yourJobs);
+
+        //  list the jobs
+        for (let i = 0; i < yourJobs.length; i++) {
+            console.log(yourJobs[i])
+            let yourJobs_card = document.createElement("div");
+            yourJobs_card.setAttribute("class", "yourJobs_card");
+
+            //  get and split a applier Name
+            let profileImage = profileImg(yourJobs[i]["FN"], yourJobs[i]["LN"]);
+            console.log(from);
+            let card = document.createElement("div");
+            card.setAttribute("class", "card");
+            card.innerHTML = `   <div class="userName" onclick> <img src="${profileImage}" alt="image"> ${yourJobs[i]["FN"] + yourJobs[i]["LN"]} <a id="ownerDetails" onclick="ownerDetails(${yourJobs[i]["ownerId"]},${i})" >Owner Details </a></div>
+                        <div class="title">
+                            ${yourJobs[i]["title"]}
+                        </div>
+
+                        <div class="description">
+                            ${yourJobs[i]["disc"]}
+                        </div>
+
+                        <div class="cardLast">
+                            <div class="location">${yourJobs[i]["location"]}</div>
+                            <div class="salary">Rs.${yourJobs[i]["Salary"]}</div>
+                            <div class="viewMore" onclick="yourJobsClick(${i})"> <i class="fa fa-angle-double-right" style="font-size:48px;"></i></div>
+                        </div>`;
+            document.querySelector(".cards").append(card);
+
+        }
+
+        // details
+
+        let right = document.createElement("div");
+        right.setAttribute("class", "right");
+
+
+        let right_sec = document.createElement("section");
+        right_sec.setAttribute("class", "right_sec");
+        right.append(right_sec);
+
+        let cross = document.createElement("div");
+        cross.setAttribute("class", "cross");
+        right_sec.append(cross);
+
+        let cross_img = document.createElement("img");
+        cross_img.setAttribute("src", "../assets/Images/cross.svg");
+        cross_img.setAttribute("onclick", "closeDetail()");
+        cross_img.setAttribute("alt", "image");
+        cross.append(cross_img);
+
+        let Deatils = document.createElement("div");
+        Deatils.setAttribute("class", "Deatils");
+        right_sec.append(Deatils);
+
+        let head = document.createElement("div");
+        head.setAttribute("class", "head");
+        Deatils.append(head);
+
+        let headNextDiv = document.createElement("div");
+        head.append(headNextDiv);
+
+        let title = document.createElement("div");
+        title.setAttribute("class", "title");
+        title.innerText = `Title`;
+        headNextDiv.append(title);
+
+        let location_deta = document.createElement("div");
+        location_deta.setAttribute("class", "location_deta");
+        location_deta.innerText = `location`;
+        headNextDiv.append(location_deta);
+
+        let applyBtn = document.createElement("button");
+        applyBtn.setAttribute("class", "apply");
+        applyBtn.setAttribute("onclick", "applyJob()")
+        applyBtn.innerText = "Apply";
+        Deatils.append(applyBtn);
+
+        let moredetails = document.createElement("div");
+        moredetails.setAttribute("class", "moredetails");
+        Deatils.append(moredetails);
+
+        let heading = document.createElement("div");
+        heading.setAttribute("class", "heading");
+        moredetails.append(heading);
+
+        let jobTitle = document.createElement("div");
+        jobTitle.setAttribute("class", "jobTitle");
+        jobTitle.innerHTML = `<b>Job Title :</b>Title `;
+        heading.append(jobTitle);
+
+        let jobLocation = document.createElement("div");
+        jobLocation.setAttribute("class", "jobLocation");
+        jobLocation.innerHTML = `<b>Location :</b> Location`;
+        heading.append(jobLocation);
+
+        let summary = document.createElement("div");
+        summary.setAttribute("class", "summary");
+        moredetails.append(summary);
+
+        let jobSummary = document.createElement("div");
+        jobSummary.setAttribute("class", "jobSummary");
+        jobSummary.innerHTML = `<b>Job Summary</b>`;
+        heading.append(jobSummary);
+
+        let jobSummaryUL = document.createElement("ul");
+        jobSummary.append(jobSummaryUL);
+
+        let Qualifications = document.createElement("div");
+        Qualifications.setAttribute("class", "Qualifications");
+        summary.append(Qualifications);
+
+        let QualificationsP = document.createElement("p")
+        QualificationsP.innerText = "Qualifications";
+        Qualifications.append(QualificationsP);
+
+        let QualificationsUL = document.createElement("ul");
+        Qualifications.append(QualificationsUL);
+
+        let Responsibilities = document.createElement("div");
+        Responsibilities.setAttribute("class", "Responsibilities");
+        summary.append(Responsibilities);
+
+        let ResponsibilitiesP = document.createElement("p")
+        ResponsibilitiesP.innerText = "Responsibilities";
+        Responsibilities.append(ResponsibilitiesP);
+
+        let ResponsibilitiesUL = document.createElement("ul");
+        Responsibilities.append(ResponsibilitiesUL);
+        document.querySelector("main").append(right);
+    </script>
+
+
+
+
+
+</body>
+
+
+</html>
