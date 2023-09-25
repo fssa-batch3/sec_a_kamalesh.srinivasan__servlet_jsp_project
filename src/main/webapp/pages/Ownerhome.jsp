@@ -67,7 +67,7 @@ table {
 
 th, td {
 	border: 1px solid #dddddd;
-	text-align: left;
+	text-align: center;
 	padding: 8px;
 }
 
@@ -93,10 +93,18 @@ tr:nth-child(even) {
 	color: orange;
 	font-weight: bold;
 }
+
 .textAreaLast {
 	display: flex;
 	flex-direction: column;
 	gap: 0.7rem;
+}
+
+.closeTable {
+	text-decoration: none;
+	color:red;
+	width:10px;
+	height:10px;
 }
 </style>
 
@@ -336,9 +344,6 @@ tr:nth-child(even) {
 							}
 						}
 					});
-	
-	
-	 
 </script>
 
 </html>

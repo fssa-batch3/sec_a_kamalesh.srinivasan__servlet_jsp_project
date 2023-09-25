@@ -329,6 +329,8 @@ function openDetails(id) {
 	            .then(function (response) {
 	                const list = response.data;
 	                let cards = document.querySelector(".cards");
+	                cards.style.display = "flex";
+	                cards.style.justifyContent="center";
 	                cards.innerHTML = `
 	                    <table>
 	                        <thead>
@@ -342,9 +344,10 @@ function openDetails(id) {
 	                            
 	                        </tbody>
 	                    </table>
-	                    <a href="home">Close</a>
+	                    <a href="home" class="closeTable"><i class="fa fa-close" style="font-size:30px;color:red"></i></a>
 	                `;
 
+					const tableBody = document.querySelector("table tbody");
 
 	                list.forEach(item => {
 	                    const row = document.createElement("tr");
@@ -357,12 +360,10 @@ function openDetails(id) {
 	                });
 	            })
 	            .catch(function (error) {
-					const tableBody = document.querySelector("table tbody");
+	            	const tableBody = document.querySelector("table tbody");
 					const row = document.createElement("tr");
 	                    row.innerHTML = `
-	                        <td></td>
-	                        <td>Request Not Found</td>
-	                        <td></td>
+	                         <td colspan="3">No one request for this job</td>
 	                    `;
 	                    tableBody.appendChild(row);
 	                console.log("Axios Error:", error);
