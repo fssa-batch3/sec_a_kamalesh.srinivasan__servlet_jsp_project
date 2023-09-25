@@ -59,6 +59,45 @@
 .apply-button:hover {
 	background-color: #2980b9;
 }
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.status-approved {
+	color: green;
+	font-weight: bold;
+}
+
+.status-rejected {
+	color: red;
+	font-weight: bold;
+}
+
+.status-pending {
+	color: orange;
+	font-weight: bold;
+}
+.textAreaLast {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+}
 </style>
 
 </head>
@@ -127,7 +166,8 @@
 					<strong>Salary:</strong> RS.<%=item.getPrice()%>
 
 				</p>
-				<button class="apply-button">Detail</button>
+				<button class="apply-button"
+					onclick="openDetails('<%=item.getJobid()%>')">Detail</button>
 			</div>
 			<%
 			}
@@ -161,39 +201,20 @@
 						<input type="number" name="Salary" id="Salary"
 							placeholder="Salary" pattern="[1-9]\d*" required /> <br> <input
 							type="text" id="disc" name="disc" placeholder="Description"
-							value="you will be responsible for installing, repairing, and maintaining plumbing systems in residential."
 							required maxlength="110" /> <br>
 
 						<textarea name="summary" id="summary" placeholder="Summary"
-							required>We are seeking a skilled and experienced plumber to join our team. The ideal candidate should have a strong knowledge of plumbing systems, excellent problem-solving skills, and the ability to work independently. You should be detail-oriented, customer-focused, and committed to delivering high-quality plumbing services.</textarea>
+							required></textarea>
 					</div>
 
-					<div>
+					<div class="textAreaLast">
 						<textarea name="Qualifications" id="Qualifications"
-							placeholder="Qualifications" required>High school diploma or equivalent.
-Completion of a plumbing apprenticeship program or relevant vocational training.
-State-issued plumbing license (required).
-Strong knowledge of plumbing systems, tools, and equipment.
-Excellent problem-solving and troubleshooting skills.
-Attention to detail and accuracy.
-Good communication and customer service skills.
-Physical stamina and the ability to work in various environments.
-Valid driver's license (may be required for some positions).</textarea>
+							placeholder="Qualifications" required></textarea>
 						<textarea name="Responsibilities" id="Responsibilities"
-							placeholder="Responsibilities" required>Install, repair, and maintain plumbing systems, including pipes, fixtures, and appliances.
-Inspect plumbing systems and identify issues or potential problems.
-Diagnose and troubleshoot plumbing problems and provide effective solutions.
-Collaborate with team members and communicate with clients to explain repairs and costs.
-Ensure compliance with plumbing codes and safety regulations.
-Perform routine maintenance on plumbing systems to prevent issues.
-Keep accurate records of work performed, materials used, and time spent.
-Maintain and clean tools and equipment.
-Provide excellent customer service and maintain a professional demeanor.
-Stay up-to-date with industry trends and advancements in plumbing technology.</textarea>
-						<br>
+							placeholder="Responsibilities" required></textarea>
 					</div>
 				</div>
-                                             
+
 				<div class="formButttons">
 					<div id="closeCreateJob" onclick="closeCreateJob()">Cancel</div>
 					<button type="submit">Add</button>
@@ -209,7 +230,7 @@ Stay up-to-date with industry trends and advancements in plumbing technology.</t
 	</main>
 
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 	document
 			.addEventListener(
@@ -315,6 +336,9 @@ Stay up-to-date with industry trends and advancements in plumbing technology.</t
 							}
 						}
 					});
+	
+	
+	 
 </script>
 
 </html>

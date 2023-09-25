@@ -53,7 +53,7 @@
         <h1>404</h1>
         <p>Oops! Something went wrong.</p>
         <p>The page you are looking for could not be found.</p>
-        <p><a href="home">Go back to the home page</a></p>
+        <p><a href="<%request.getContextPath(); %>home">Go back to the home page</a></p>
     </div>
 </body>
 </html>

@@ -39,7 +39,15 @@ public class RegisterServlet extends HttpServlet {
 		RequestDispatcher dispatcher;
 		HttpSession session = request.getSession();
 		session.setAttribute("user", user1);
-		dispatcher = request.getRequestDispatcher("home");
+		try {
+			userService.registerUser(user1);
+			dispatcher = request.getRequestDispatcher("home");
+		} catch (ServiceException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			dispatcher = request.getRequestDispatcher("/register.jsp?error="+e.getMessage());
+		}
+
 		dispatcher.forward(request, response);
 	}
 

@@ -322,3 +322,49 @@ function openCreateJob() {
 function closeCreateJob() {
   document.querySelector(".form").style.display = "none";
 }
+
+function openDetails(id) {
+	        const url = "/needstobedone-web/jobApplierList?id=" + id;
+	        axios.get(url)
+	            .then(function (response) {
+	                const list = response.data;
+	                let cards = document.querySelector(".cards");
+	                cards.innerHTML = `
+	                    <table>
+	                        <thead>
+	                            <tr>
+	                                <th>Requester Name</th>
+	                                <th>From Email</th>
+	                                <th>Notification Status</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            
+	                        </tbody>
+	                    </table>
+	                    <a href="home">Close</a>
+	                `;
+
+
+	                list.forEach(item => {
+	                    const row = document.createElement("tr");
+	                    row.innerHTML = `
+	                        <td>${item.user.firstName}</td>
+	                        <td>${item.user.email}</td>
+	                        <td>${item.notification.status}</td>
+	                    `;
+	                    tableBody.appendChild(row);
+	                });
+	            })
+	            .catch(function (error) {
+					const tableBody = document.querySelector("table tbody");
+					const row = document.createElement("tr");
+	                    row.innerHTML = `
+	                        <td></td>
+	                        <td>Request Not Found</td>
+	                        <td></td>
+	                    `;
+	                    tableBody.appendChild(row);
+	                console.log("Axios Error:", error);
+	            });
+	    }

@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Needs To Be Done</title>
-<link rel="icon" href="./assets/Images/barLogo.png" type="image/x-icon">
+<link rel="icon" href="<%=request.getContextPath()%>/assets/images/barLogo.png" type="image/x-icon">
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;700&family=Lato&family=Outfit:wght@300&family=Roboto+Mono:ital,wght@0,300;1,300&family=Roboto+Slab:wght@300&family=Space+Mono:wght@700&display=swap')
