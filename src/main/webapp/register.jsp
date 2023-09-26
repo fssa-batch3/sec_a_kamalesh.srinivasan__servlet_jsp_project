@@ -31,50 +31,54 @@
 
 <body>
 	<section class="register">
-		
 
-		<form id="form" method="post" action="userRegister">
-		<%
-		String errorMessage = request.getParameter("error");
-		if (errorMessage != null) {
-		%>
-		<div class="alert alert-danger" role="alert">
-			<%=errorMessage%><!-- this will change based on invalid field entered -->
-		</div>
-		<%
-		}
-		%>
-		<%
-		User user = (User) request.getAttribute("regUser");
-		%>
+
+		<form id="form" method="post" action="userRegister" onsubmit="return validatePassword()">
+			<%
+			String errorMessage = request.getParameter("error");
+			if (errorMessage != null) {
+			%>
+			<div class="alert alert-danger" role="alert">
+				<%=errorMessage%><!-- this will change based on invalid field entered -->
+			</div>
+			<%
+			}
+			%>
+			<%
+			User user = (User) request.getAttribute("regUser");
+			String repeatPassword = (String) request.getAttribute("repeatPassword");
+			%>
 			<h2>Registration</h2>
 			<div class="inputs">
 				<div class="email">
 					<label for="email"> Email:- * </label><br> <input type="email"
 						name="email" id="email" placeholder="example@gmail.com"
-						value="<%=user != null ? user.getEmail() : ""%>"
-						required />
+						value="<%=user != null ? user.getEmail() : ""%>" required />
 				</div>
 				<div class="first-name">
 					<label for="first-name"> FirstName:- * </label><br> <input
 						type="text" id="first-name" name="firstName"
-						placeholder="firstname" pattern="^[A-Za-z]{3,}$" value="<%=user != null ? user.getFirstName() : ""%>" required />
+						placeholder="firstname" pattern="^[A-Za-z]{3,}$"
+						value="<%=user != null ? user.getFirstName() : ""%>" required />
 				</div>
 				<div class="last-name">
 					<label for="last-name"> LastName:- * </label><br> <input
 						type="text" id="last-name" name="lastName" placeholder="lastname"
-						pattern="^[A-Za-z]{3,}$" value="<%=user != null ? user.getLastName() : ""%>" required />
+						pattern="^[A-Za-z]{3,}$"
+						value="<%=user != null ? user.getLastName() : ""%>" required />
 				</div>
 
 				<div class="is-owner">
-					<input type="checkbox" id="is-owner" name="isOwner" checked="<%=user != null ? (user.getisOwner()) : false%>" > <label
-						for="is-owner">I am an Owner</label>
+					<input type="checkbox" id="is-owner" name="isOwner"
+						checked="<%=user != null ? (user.getisOwner()) : false%>">
+					<label for="is-owner">I am an Owner</label>
 				</div>
 				<div class="password">
 					<label for="password">Password:- *</label> <br> <input
 						type="password" id="password" placeholder="Examplepassword"
-						name="password" value="<%=user != null ? user.getPassword() : ""%>" required /> <i id="passwordEye"
-						onclick="passwordEye()" class="fa fa-eye"></i> <br>
+						name="password"
+						value="<%=user != null ? user.getPassword() : ""%>" required /> <i
+						id="passwordEye" onclick="passwordEye()" class="fa fa-eye"></i> <br>
 					<p>Password should have one UpperCase,LowerCase and more than 7
 						charecters</p>
 
@@ -83,9 +87,12 @@
 				<div class="repeatPassword">
 					<label for="repeatPassword"> Confirm password:- * </label><br>
 					<input type="password" id="repeatPassword"
-						placeholder="Examplepassword" value="<%=user != null ? user.getPassword() : ""%>"  required/><i id="repeatPasswordEye"
-						onclick="RepasswordEye()" class="fa fa-eye" ></i> <br>
-					<p>Confirm password should be same as password</p>
+						placeholder="Examplepassword"
+						value="<%=repeatPassword != null ? repeatPassword : ""%>" required />
+					<i id="repeatPasswordEye" onclick="RepasswordEye()"
+						class="fa fa-eye"></i> <br>
+					<p id="passwordMismatch" style="color: red; display: none;">Passwords
+						do not match.</p>
 				</div>
 
 
@@ -93,10 +100,12 @@
 
 			<div class="buttons">
 				<button id="reset" type="reset">
-					<img src="<%= request.getContextPath() %>/assets/images/cross.svg" alt="cancelImage">
+					<img src="<%=request.getContextPath()%>/assets/images/cross.svg"
+						alt="cancelImage">
 				</button>
 				<button id="submit" type="submit">
-					<img src="<%= request.getContextPath() %>/assets/images/tick.svg" alt="tickImage">
+					<img src="<%=request.getContextPath()%>/assets/images/tick.svg"
+						alt="tickImage">
 				</button>
 			</div>
 
@@ -106,7 +115,8 @@
 		</form>
 
 		<div class="registerIllutration">
-			<img src="<%= request.getContextPath() %>/assets/images/register.avif" alt="image">
+			<img src="<%=request.getContextPath()%>/assets/images/register.avif"
+				alt="image">
 		</div>
 
 
@@ -117,5 +127,18 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
 </body>
+<script>
+    function validatePassword() {
+        var password = document.getElementById("password").value;
+        var repeatPassword = document.getElementById("repeatPassword").value;
+
+        if (password !== repeatPassword) {
+            document.getElementById("passwordMismatch").style.display = "block";
+            return false;
+        }
+
+        return true;
+    }
+</script>
 
 </html>

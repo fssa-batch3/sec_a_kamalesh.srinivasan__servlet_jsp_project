@@ -25,8 +25,7 @@ public class HomeServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("dopost");
-		doGet(req, resp);
+ 		doGet(req, resp);
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

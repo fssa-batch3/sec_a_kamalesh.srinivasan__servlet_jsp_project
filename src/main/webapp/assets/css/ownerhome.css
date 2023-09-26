@@ -29,10 +29,8 @@ header img {
 }
 
 nav a {
-	color: #42c2ff;
-	margin-right: 2rem;
-	font-size: larger;
 	text-decoration: none;
+	padding: 2px 5px;
 }
 
 header {
@@ -344,16 +342,16 @@ nav a:hover {
 }
 
 form {
-    text-align: center;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    border: 2px solid none;
-    background-color: #85f4ff;
-    top: 10rem;
-    right: 2rem;
-    left: 2rem;
-    z-index: 10;
-    margin-top: -20rem;
+	text-align: center;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	border: 2px solid none;
+	background-color: #85f4ff;
+	top: 10rem;
+	right: 2rem;
+	left: 2rem;
+	z-index: 10;
+	margin-top: -20rem;
 }
 
 .blur {
@@ -385,15 +383,16 @@ form input {
 	outline: none;
 	width: 15rem;
 }
-input::placeholder,
-textarea::placeholder {
-    padding: 2px; /* Adjust the padding as needed */
+
+input::placeholder, textarea::placeholder {
+	padding: 2px; /* Adjust the padding as needed */
 }
+
 form textarea {
 	outline: none;
 	margin-bottom: 0.5rem;
 	border: none;
-    border-radius: 0.5rem;
+	border-radius: 0.5rem;
 }
 
 #closeCreateJob {
@@ -541,7 +540,6 @@ header a {
 	color: #ffffff;
 	text-align: center;
 	font-size: 17px;
-	padding: 0.2rem 0.5rem;
 	width: 7rem;
 	transition: all 0.5s;
 	cursor: pointer;
@@ -772,7 +770,7 @@ a:hover span:after {
 }
 
 #plusIcon {
-	background-color: #85f4ff;
+	background-color: white;
 	width: 7rem;
 	display: flex;
 	align-items: center;
@@ -781,6 +779,9 @@ a:hover span:after {
 	border-radius: 0.3rem;
 	gap: 1rem;
 	margin-left: 2rem;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+		rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+	cursor: pointer;
 }
 
 .card:hover {
@@ -803,4 +804,3 @@ a:hover span:after {
 	background-color: white;
 	color: black;
 }
-

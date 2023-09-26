@@ -25,10 +25,10 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
-		System.out.println(email);
-		String password = request.getParameter("password");
+ 		String password = request.getParameter("password");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
+		String repeatPassword = request.getParameter("repeatPassword");
 		boolean isOwner = false;
 		if (request.getParameter("isOwner") != null && request.getParameter("isOwner").equals("on")) {
 			isOwner = true;
@@ -44,7 +44,8 @@ public class RegisterServlet extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("home");
 		} catch (ServiceException e) {
 			e.printStackTrace();
-			System.out.println(e.getMessage());
+ 			request.setAttribute("regUser", user1);
+			request.setAttribute("repeatPassword", repeatPassword);
 			dispatcher = request.getRequestDispatcher("/register.jsp?error="+e.getMessage());
 		}
 

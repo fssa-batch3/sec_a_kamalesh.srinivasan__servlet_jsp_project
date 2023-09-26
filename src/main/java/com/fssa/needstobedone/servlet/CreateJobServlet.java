@@ -47,7 +47,6 @@ public class CreateJobServlet extends HttpServlet {
 		try {
 			jobService.createJob(job);
 			response.sendRedirect("home");
-			System.out.println("job Created");
 		} catch (ServiceException e) {
 			out.println(e.getMessage());
 		}

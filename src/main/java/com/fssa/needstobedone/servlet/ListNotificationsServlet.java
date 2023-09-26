@@ -24,16 +24,13 @@ public class ListNotificationsServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("NL");
-		HttpSession session = request.getSession(false);
+ 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
 		int applierId = user.getUserId(); 
-		System.out.println(applierId);
-		try {
+ 		try {
 			NotificationService notificationService = new NotificationService();
 			if(user.getisOwner()) {
-				System.out.println("user.getisOwner()"+user.getisOwner());
-				List<AllModal> notifications = notificationService.getNotificationsByUserId(applierId);
+ 				List<AllModal> notifications = notificationService.getNotificationsByUserId(applierId);
 				request.setAttribute("notifications", notifications);			
 			}
 			else {

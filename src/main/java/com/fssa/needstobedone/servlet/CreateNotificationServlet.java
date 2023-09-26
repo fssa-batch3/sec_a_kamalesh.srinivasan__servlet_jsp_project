@@ -30,8 +30,7 @@ public class CreateNotificationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("createNotification");
-		BufferedReader reader = request.getReader();
+ 		BufferedReader reader = request.getReader();
 		StringBuilder stringBuilder = new StringBuilder();
 		String line;
 		while ((line = reader.readLine()) != null) {
@@ -41,11 +40,9 @@ public class CreateNotificationServlet extends HttpServlet {
 
 		JSONObject jsonObject = new JSONObject(jsonString);
 		String jobId = jsonObject.getString("jobId");
-		System.out.println(jobId);
-		HttpSession session = request.getSession();
+ 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		System.out.println(user);
-		Notification notification = new Notification(user.getUserId(), jobId, "Not Actioned");
+ 		Notification notification = new Notification(user.getUserId(), jobId, "Not Actioned");
 		boolean notificationCreated = false;
 		NotificationService notificationService = new NotificationService();
 		try {

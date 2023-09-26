@@ -25,7 +25,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'
 	crossorigin='anonymous'></script>
-<link rel="icon" href="../assets/images/barLogo.png" type="image/x-icon">
+<link rel="icon" href="<%= request.getContextPath() %>/assets/images/barLogo.png" type="image/x-icon">
 
 <style>
 /* Add your CSS styles here */
@@ -34,26 +34,31 @@
 	padding: 20px;
 	margin-bottom: 20px;
 	border-radius: 10px;
-	background-color: #f9f9f9;
+	background: linear-gradient(40deg, #c84449 10%, #382d5e 90%);
+	margin:0px;
 }
 
-.card h3 {
-	margin-bottom: 10px;
-	color: #333;
+.card h2 {
+	magin-bottm: 10px;
+	color: gold;
+	text-align: center;
+	padding: 0px;
 }
 
 .card p {
 	margin-bottom: 10px;
-	color: #666;
+	color: white;
+	
 }
 
 .apply-button {
-	padding: 10px 20px;
-	border: none;
-	border-radius: 5px;
-	background-color: #3498db;
-	color: white;
-	cursor: pointer;
+padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: azure;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: #382d5e;
 }
 
 .apply-button:hover {
@@ -102,9 +107,9 @@ tr:nth-child(even) {
 
 .closeTable {
 	text-decoration: none;
-	color:red;
-	width:10px;
-	height:10px;
+	color: red;
+	width: 10px;
+	height: 10px;
 }
 </style>
 
@@ -163,7 +168,7 @@ tr:nth-child(even) {
 			%>
 
 			<div class="card">
-				<h3><%=item.getTitle()%></h3>
+				<h2><%=item.getTitle()%></h2>
 				<p>
 					<strong>Location:</strong>
 					<%=item.getLocation()%></p>
