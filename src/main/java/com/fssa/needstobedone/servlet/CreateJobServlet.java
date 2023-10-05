@@ -3,6 +3,7 @@ package com.fssa.needstobedone.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +29,7 @@ public class CreateJobServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("create job");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
@@ -47,8 +49,15 @@ public class CreateJobServlet extends HttpServlet {
 		try {
 			jobService.createJob(job);
 			response.sendRedirect("home");
-		} catch (ServiceException e) {
-			out.println(e.getMessage());
+		} catch (ServiceException e)
+		{
+			String errorMessage = e.getMessage();
+			request.setAttribute("errorMessage",errorMessage);
+			request.setAttribute("job", job);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("home");
+			dispatcher.forward(request,response);
+			e.printStackTrace();
+			
 		}
 	}
 }

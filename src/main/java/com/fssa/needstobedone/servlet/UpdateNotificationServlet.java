@@ -32,7 +32,7 @@ public class UpdateNotificationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
- 		BufferedReader reader = request.getReader();
+		BufferedReader reader = request.getReader();
 		StringBuilder stringBuilder = new StringBuilder();
 		String line;
 		while ((line = reader.readLine()) != null) {
@@ -40,11 +40,11 @@ public class UpdateNotificationServlet extends HttpServlet {
 		}
 		String jsonString = stringBuilder.toString();
 		JSONObject jsonObject = new JSONObject(jsonString);
- 		int notificationId = jsonObject.getInt("notificationId");
+		int notificationId = jsonObject.getInt("notificationId");
 		String message = jsonObject.getString("updateMessage");
- 		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
- 		Notification notification = new Notification();
+		Notification notification = new Notification();
 		notification.setNotificationId(notificationId);
 		notification.setStatus(message);
 		String jobId = null;
@@ -57,12 +57,10 @@ public class UpdateNotificationServlet extends HttpServlet {
 				JobService jobService = new JobService();
 				Job job = jobService.listJobsByJobId(jobId);
 				job.setStatus("Started");
- 			} catch (ServiceException e) {
+			} catch (ServiceException e) {
 				e.printStackTrace();
 			}
 
-//        	JobService jobService = new JobService();
-//        	jobService.updateJobs(); 
 		}
 		boolean notificationCreated = false;
 		NotificationService notificationService = new NotificationService();

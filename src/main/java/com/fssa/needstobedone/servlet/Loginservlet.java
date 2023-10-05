@@ -29,9 +29,9 @@ public class LoginServlet extends HttpServlet {
 		UserService userService = new UserService();
 		try {
 			User gettedUser = userService.logInUser(user);
+			System.out.println(gettedUser.toString());
  			HttpSession session = request.getSession();
 			session.setAttribute("user", gettedUser);
-			session.setMaxInactiveInterval(24*60);
 			RequestDispatcher dispatcher;
 			dispatcher = request.getRequestDispatcher("home");
 			dispatcher.forward(request, response);

@@ -25,18 +25,27 @@ public class HomeServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
- 		doGet(req, resp);
+		doGet(req, resp);
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+		String errorMessage = (String) request.getAttribute("errorMessage");
+		Job job = (Job) request.getAttribute("job");
 		if (user != null) {
 			JobService jobService = new JobService();
 			try {
 				if (user.getisOwner()) {
 					List<Job> results = jobService.listJobsByUserId(Integer.toString(user.getUserId()));
+					if (errorMessage != null && job != null) {
+						request.setAttribute(errorMessage, errorMessage);
+						request.setAttribute("job", job);
+					} else {
+						System.out.println("aaaaaaaaaaaaaaaa");
+						request.setAttribute(errorMessage, "");
+					}
 					request.setAttribute("jobs", results);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/Ownerhome.jsp");
 					dispatcher.forward(request, response);
@@ -49,14 +58,17 @@ public class HomeServlet extends HttpServlet {
 			} catch (ServiceException e) {
 				String errorPage;
 				if (user.getisOwner()) {
+					System.out.println("Service Exception owner true");
 					errorPage = "pages/Ownerhome.jsp?error=" + e.getMessage();
 				} else {
+					System.out.println("Service Exception owner false");
 					errorPage = "pages/workerHome.jsp?error=" + e.getMessage();
 				}
 				response.sendRedirect(request.getContextPath() + "/" + errorPage);
+				System.out.println(e.getMessage()+" ===  error message");
 				e.printStackTrace();
 			}
-		}else {
+		} else {
 			response.sendRedirect(request.getContextPath() + "/error.jsp");
 		}
 	}

@@ -134,6 +134,20 @@ tr:nth-child(even) {
 			</div>
 		</nav>
 	</header>
+	
+	<% 
+	String duplicationJobCreation =(String) request.getAttribute("errorMessage");
+	Job job = (Job) request.getAttribute("job");
+	%>
+	
+
+	<c:if test="${duplicationJobCreation eq 'Duplicate record'} ">
+	 <script>
+	   openJobCreateForm();
+	   document.getElementById().value = job.get
+	 </script>
+	</c:if>
+	
 
 	<main>
 		<section>
@@ -207,24 +221,24 @@ tr:nth-child(even) {
 
 				<div class="datas">
 					<div>
-						<input type="text" name="title" id="title"
+						<input type="text" name="title" id="title" value="Test"
 							placeholder="Title of the job" pattern="[a-zA-Z\s]+" required />
-						<br> <input type="text" name="location" id="location"
+						<br> <input type="text" name="location" id="location" value="chennai"
 							placeholder="Location" pattern="[a-zA-Z\s]+" required /> <br>
-						<input type="number" name="Salary" id="Salary"
+						<input type="number" name="Salary" id="Salary" value="10000"
 							placeholder="Salary" pattern="[1-9]\d*" required /> <br> <input
-							type="text" id="disc" name="disc" placeholder="Description"
+							type="text" id="disc" name="disc" placeholder="Description"value="Test"
 							required maxlength="110" /> <br>
 
 						<textarea name="summary" id="summary" placeholder="Summary"
-							required></textarea>
+							required>Test</textarea>
 					</div>
 
 					<div class="textAreaLast">
 						<textarea name="Qualifications" id="Qualifications"
-							placeholder="Qualifications" required></textarea>
+							placeholder="Qualifications" required>Test</textarea>
 						<textarea name="Responsibilities" id="Responsibilities"
-							placeholder="Responsibilities" required></textarea>
+							placeholder="Responsibilities" required>Test</textarea>
 					</div>
 				</div>
 
@@ -349,6 +363,13 @@ tr:nth-child(even) {
 							}
 						}
 					});
+	
+	
+	function openJobCreateForm(){
+		openCreateJob();
+		
+		
+	}
 </script>
 
 </html>

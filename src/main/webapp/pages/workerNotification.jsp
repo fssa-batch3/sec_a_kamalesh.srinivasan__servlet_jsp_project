@@ -32,180 +32,7 @@
 	href="<%=request.getContextPath()%>/assets/images/barLogo.png"
 	type="image/x-icon">
 </head>
-<script>
-function approveJobRequest(notificationId) {
-    console.log("approveJob");
-    let notificationData = {
-        notificationId: notificationId,
-        updateMessage: "Approved" 
-    };
 
-    fetch('<%=request.getContextPath()%>/UpdateNotificationServlet', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(notificationData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Job approved successfully!');
-            window.location.reload();
-
-        } else {
-            alert('Job application failed. Please try again.');
-
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-
-    });
-
-}
-
-
-function rejectJobRequest(notificationId) {
-    console.log("Rejectjob");
-    let notificationData = {
-        notificationId: notificationId, // Add a comma here
-        updateMessage: "Rejected" // Separate properties with a comma
-    };
-
-    fetch('<%=request.getContextPath()%>/UpdateNotificationServlet', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(notificationData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Job rejected successfully!');
-            window.location.reload();
-
-        } else {
-            alert('Job application failed. Please try again.');
-        }
-        
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-    });
-
-}
-
-
-function completeJobRequest(notificationId) {
-    console.log("Complete Job");
-    let notificationData = {
-        notificationId: notificationId, // Add a comma here
-        updateMessage: "Completed" // Separate properties with a comma
-    };
-
-    fetch('<%=request.getContextPath()%>/UpdateNotificationServlet', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(notificationData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Job completed successfully!');
-            window.location.reload();
-        } else {
-            alert('Job application failed. Please try again.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-    });
-
-}
-
-
-function createPayment(notificationId){
-	
-	console.log("payment");
-	console.log(notificationId);
-	// Get the modal element
-
-    // Get the <span> element that closes the modal
-    let span = document.getElementsByClassName("close");
-    let notificationList = document.querySelector(".notificationList");
-    notificationList.innerHTML = `<div id="paymentModal" class="modal">
-    
-		<div class="modal-content">
-			<span class="close" onclick="closePaymentModal()">&times;</span>
-		<div>Get the payment details using Email or if you are paid click the paid button to mark the job as paid</div>
-			<button  id="paid">Paid</button>
-			<button onclick="closePaymentModal()">Cancel</button>
-		</div>
-	</div>`;
-	
-	const paid = document.getElementById('paid');
-
-	paid.addEventListener('click', function() {
-		console.log("Paid");
-	    console.log(notificationId);
-	    console.log(parseInt(notificationId));
-	    let notificationData = {
-	        notificationId: parseInt(notificationId), // Add a comma here
-	        updateMessage: "Paid" // Separate properties with a comma
-	    };
-
-	    fetch('<%=request.getContextPath()%>/UpdateNotificationServlet', {
-	        method: 'POST',
-	        headers: {
-	            'Content-Type': 'application/json'
-	        },
-	        body: JSON.stringify(notificationData)
-	    })
-	    .then(response => response.json())
-	    .then(data => {
-	        if (data.success) {
-	            alert('Amount paid successfully!');
-	            window.location.reload();
-
-	        } else {
-	            alert('payment failed. Please try again.');
-	        }
-	    })
-	    .catch(error => {
-	        console.error('Error:', error);
-	        alert('An error occurred. Please try again.');
-	    });
-	});
-    
-    let modal = document.getElementById("paymentModal");
-
-    // Display the modal
-    modal.style.display = "block";
-    
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-	
-}
-
-
-function closePaymentModal() {
-    // Close the modal
-    var modal = document.getElementById("paymentModal");
-    modal.style.display = "none";
-    window.location.reload();
-}
-
-
-</script>
 <body>
 	<script src="<%=request.getContextPath()%>/assets/JS/index.js"></script>
 
@@ -315,6 +142,169 @@ function closePaymentModal() {
 		</section>
 	</main>
 </body>
+<script>
+function approveJobRequest(notificationId) {
+    let notificationData = {
+        notificationId: notificationId,
+        updateMessage: "Approved" 
+    };
 
+    fetch('<%=request.getContextPath()%>/UpdateNotificationServlet', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(notificationData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Job approved successfully!');
+            window.location.reload();
+
+        } else {
+            alert('Job application failed. Please try again.');
+
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+
+    });
+
+}
+
+
+function rejectJobRequest(notificationId) {
+    let notificationData = {
+        notificationId: notificationId,  
+        updateMessage: "Rejected"  
+    };
+
+    fetch('<%=request.getContextPath()%>/UpdateNotificationServlet', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(notificationData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Job rejected successfully!');
+            window.location.reload();
+
+        } else {
+            alert('Job application failed. Please try again.');
+        }
+        
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+
+}
+
+
+function completeJobRequest(notificationId) {
+    let notificationData = {
+        notificationId: notificationId,  
+        updateMessage: "Completed" 
+    };
+
+    fetch('<%=request.getContextPath()%>/UpdateNotificationServlet', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(notificationData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Job completed successfully!');
+            window.location.reload();
+        } else {
+            alert('Job application failed. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+
+}
+
+
+function createPayment(notificationId){
+	
+
+    let span = document.getElementsByClassName("close");
+    let notificationList = document.querySelector(".notificationList");
+    notificationList.innerHTML = `<div id="paymentModal" class="modal">
+    
+		<div class="modal-content">
+			<span class="close" onclick="closePaymentModal()">&times;</span>
+		<div>Get the payment details using Email or if you are paid click the paid button to mark the job as paid</div>
+			<button  id="paid">Paid</button>
+			<button onclick="closePaymentModal()">Cancel</button>
+		</div>
+	</div>`;
+	
+	const paid = document.getElementById('paid');
+
+	paid.addEventListener('click', function() {
+		console.log("Paid");
+	    console.log(notificationId);
+	    console.log(parseInt(notificationId));
+	    let notificationData = {
+	        notificationId: parseInt(notificationId), 
+	        updateMessage: "Paid" 
+	    };
+
+	    fetch('<%=request.getContextPath()%>/UpdateNotificationServlet', {
+	        method: 'POST',
+	        headers: {
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify(notificationData)
+	    })
+	    .then(response => response.json())
+	    .then(data => {
+	        if (data.success) {
+	            alert('Amount paid successfully!');
+	            window.location.reload();
+
+	        } else {
+	            alert('payment failed. Please try again.');
+	        }
+	    })
+	    .catch(error => {
+	        console.error('Error:', error);
+	        alert('An error occurred. Please try again.');
+	    });
+	});
+    
+    let modal = document.getElementById("paymentModal");
+
+    modal.style.display = "block";
+    
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+	
+}
+
+
+function closePaymentModal() {
+    var modal = document.getElementById("paymentModal");
+    modal.style.display = "none";
+    window.location.reload();
+}
+
+
+</script>
 
 </html>
