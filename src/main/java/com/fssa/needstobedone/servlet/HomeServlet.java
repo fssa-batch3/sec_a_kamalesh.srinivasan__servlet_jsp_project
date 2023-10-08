@@ -40,11 +40,11 @@ public class HomeServlet extends HttpServlet {
 				if (user.getisOwner()) {
 					List<Job> results = jobService.listJobsByUserId(Integer.toString(user.getUserId()));
 					if (errorMessage != null && job != null) {
-						request.setAttribute(errorMessage, errorMessage);
+						request.setAttribute("errorMessage", errorMessage);
 						request.setAttribute("job", job);
 					} else {
 						System.out.println("aaaaaaaaaaaaaaaa");
-						request.setAttribute(errorMessage, "");
+						request.setAttribute("errorMessage", "");
 					}
 					request.setAttribute("jobs", results);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/Ownerhome.jsp");

@@ -118,7 +118,7 @@
 
 						</p>
 						<button class="apply-button"
-							onclick="applyJob('<%=item.getJobid()%>')">apply</button>
+							onclick="applyJob('<%=item.getJobid()%>')">Apply</button>
 					</div>
 					<%
 					}
