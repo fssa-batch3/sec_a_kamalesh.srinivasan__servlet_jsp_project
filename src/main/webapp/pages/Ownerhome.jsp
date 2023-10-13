@@ -25,7 +25,9 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'
 	crossorigin='anonymous'></script>
-<link rel="icon" href="<%= request.getContextPath() %>/assets/images/barLogo.png" type="image/x-icon">
+<link rel="icon"
+	href="<%=request.getContextPath()%>/assets/images/barLogo.png"
+	type="image/x-icon">
 
 <style>
 /* Add your CSS styles here */
@@ -35,7 +37,7 @@
 	margin-bottom: 20px;
 	border-radius: 10px;
 	background: linear-gradient(40deg, #c84449 10%, #382d5e 90%);
-	margin:0px;
+	margin: 0px;
 }
 
 .card h2 {
@@ -48,17 +50,16 @@
 .card p {
 	margin-bottom: 10px;
 	color: white;
-	
 }
 
 .apply-button {
-padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    color: azure;
-    cursor: pointer;
-    margin-top: 1rem;
-    background: #382d5e;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	color: azure;
+	cursor: pointer;
+	margin-top: 1rem;
+	background: #382d5e;
 }
 
 .apply-button:hover {
@@ -111,6 +112,11 @@ tr:nth-child(even) {
 	width: 10px;
 	height: 10px;
 }
+
+.card-last{
+    display: flex;
+    justify-content: space-between;
+    }
 </style>
 
 </head>
@@ -134,20 +140,9 @@ tr:nth-child(even) {
 			</div>
 		</nav>
 	</header>
-	
-	<% 
-	String duplicationJobCreation =(String) request.getAttribute("errorMessage");
-	Job job = (Job) request.getAttribute("job");
-	%>
-	
 
-	<c:if test="${duplicationJobCreation eq 'Duplicate record'} ">
-	 <script>
-	   openJobCreateForm();
-	   document.getElementById().value = job.get
-	 </script>
-	</c:if>
-	
+
+
 
 	<main>
 		<section>
@@ -193,8 +188,14 @@ tr:nth-child(even) {
 					<strong>Salary:</strong> RS.<%=item.getPrice()%>
 
 				</p>
-				<button class="apply-button"
-					onclick="openDetails('<%=item.getJobid()%>')">Detail</button>
+				<div class="card-last">
+					<button class="apply-button"
+						onclick="openDetails('<%=item.getJobid()%>')">Detail</button>
+					<p>
+						<strong>Created:</strong>
+						<%=item.getCreatedDate()%>
+					</p>
+				</div>
 			</div>
 			<%
 			}
@@ -223,12 +224,13 @@ tr:nth-child(even) {
 					<div>
 						<input type="text" name="title" id="title" value="Test"
 							placeholder="Title of the job" pattern="[a-zA-Z\s]+" required />
-						<br> <input type="text" name="location" id="location" value="chennai"
-							placeholder="Location" pattern="[a-zA-Z\s]+" required /> <br>
-						<input type="number" name="Salary" id="Salary" value="10000"
-							placeholder="Salary" pattern="[1-9]\d*" required /> <br> <input
-							type="text" id="disc" name="disc" placeholder="Description"value="Test"
-							required maxlength="110" /> <br>
+						<br> <input type="text" name="location" id="location"
+							value="chennai" placeholder="Location" pattern="[a-zA-Z\s]+"
+							required /> <br> <input type="number" name="Salary"
+							id="Salary" value="10000" placeholder="Salary" pattern="[1-9]\d*"
+							required /> <br> <input type="text" id="disc" name="disc"
+							placeholder="Description" value="Test" required maxlength="110" />
+						<br>
 
 						<textarea name="summary" id="summary" placeholder="Summary"
 							required>Test</textarea>
@@ -255,6 +257,21 @@ tr:nth-child(even) {
 
 
 	</main>
+
+	<%
+	String duplicationJobCreation = (String) request.getAttribute("errorMessage");
+	Job job = (Job) request.getAttribute("job");
+	if ("Duplicate record".equals(duplicationJobCreation)) {
+		out.println("<script>" + "console.log('Duplicate');" + "alert('Job already exist');" + "openCreateJob();"
+		+ "document.getElementById('title').value = '" + job.getTitle() + "';"
+		+ "document.getElementById('location').value = '" + job.getLocation() + "';"
+		+ "document.getElementById('Salary').value = '" + job.getPrice() + "';"
+		+ "document.getElementById('disc').value = '" + job.getDescription() + "';"
+		+ "document.getElementById('summary').value = '" + job.getSummary() + "';"
+		+ "document.getElementById('Qualifications').value = '" + job.getQualification() + "';"
+		+ "document.getElementById('Responsibilities').value = '" + job.getResponsibilities() + "';" + "</script>");
+	}
+	%>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -365,11 +382,16 @@ tr:nth-child(even) {
 					});
 	
 	
-	function openJobCreateForm(){
-		openCreateJob();
-		
-		
-	}
+	function calculateDaysAgo(createdDate) {
+		  const currentDate = new Date(); // Current date and time
+		  const jobDate = new Date(createdDate); // Convert the created_date to a Date object
+
+		  // Calculate the time difference in milliseconds
+		  const timeDifference = currentDate - jobDate;
+		  // Calculate the number of days
+		  const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+		  return daysAgo;
+		}
 </script>
 
 </html>

@@ -30,6 +30,7 @@ public class HomeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("Home Servlet");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		String errorMessage = (String) request.getAttribute("errorMessage");
@@ -66,7 +67,6 @@ public class HomeServlet extends HttpServlet {
 				}
 				response.sendRedirect(request.getContextPath() + "/" + errorPage);
 				System.out.println(e.getMessage()+" ===  error message");
-				e.printStackTrace();
 			}
 		} else {
 			response.sendRedirect(request.getContextPath() + "/error.jsp");

@@ -52,12 +52,16 @@ public class CreateJobServlet extends HttpServlet {
 		} catch (ServiceException e)
 		{
 			String errorMessage = e.getMessage();
-			request.setAttribute("errorMessage",errorMessage);
-			request.setAttribute("job", job);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("home");
-			dispatcher.forward(request,response);
-			e.printStackTrace();
-			
+		    // Remove the exception type from the error message
+		    int colonIndex = errorMessage.indexOf(":");
+		    if (colonIndex != -1) {
+		        errorMessage = errorMessage.substring(colonIndex + 1).trim();
+		    }
+		    request.setAttribute("errorMessage", errorMessage);
+		    request.setAttribute("job", job);
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("home");
+		    dispatcher.forward(request, response);
+
 		}
 	}
 }
